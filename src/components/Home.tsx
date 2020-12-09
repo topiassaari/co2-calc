@@ -14,8 +14,8 @@ class Home extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({ dayCO: Math.round(Math.random() + this.state.week * 2) });
-    this.setState({ weekCO: Math.round(Math.random() + this.state.week * 8) });
+    this.setState({ dayCO: Math.round(Math.random() + this.state.week / 7) });
+    this.setState({ weekCO: Math.round(Math.random() + this.state.week) });
     this.setState({
       monthCO: Math.round(Math.random() + this.state.month * 2),
     });
@@ -28,7 +28,31 @@ class Home extends React.Component {
           <div>
             <div className="box" id="today">
               <div>
-                <h2>DAY {this.state.date}</h2>
+                <h2>{this.state.date}</h2>
+                <button
+                  id="prev"
+                  onClick={() =>
+                    this.setState({
+                      dayCO: Math.round(
+                        Math.random() * 10 + this.state.week / 7
+                      ),
+                    }) as any
+                  }
+                >
+                  PREV
+                </button>
+                <button
+                  id="next"
+                  onClick={() =>
+                    this.setState({
+                      dayCO: Math.round(
+                        Math.random() * 10 + this.state.week / 7
+                      ),
+                    }) as any
+                  }
+                >
+                  NEXT
+                </button>
               </div>
               <div>
                 <span>{this.state.dayCO} CO2/KG</span>
@@ -37,29 +61,29 @@ class Home extends React.Component {
             <div className="box" id="week">
               <div>
                 <h2>WEEK {this.state.week}</h2>
+                <button
+                  id="prev"
+                  onClick={() =>
+                    this.setState({
+                      week: this.state.week - 1,
+                      weekCO: Math.round(Math.random() * 3 + this.state.week),
+                    }) as any
+                  }
+                >
+                  PREV
+                </button>
+                <button
+                  id="next"
+                  onClick={() =>
+                    this.setState({
+                      week: this.state.week + 1,
+                      weekCO: Math.round(Math.random() * 3 + this.state.week),
+                    }) as any
+                  }
+                >
+                  NEXT
+                </button>
               </div>
-              <button
-                id="prev"
-                onClick={() =>
-                  this.setState({
-                    week: this.state.week - 1,
-                    weekCO: Math.round(Math.random() + this.state.week * 3),
-                  }) as any
-                }
-              >
-                PREV
-              </button>
-              <button
-                id="next"
-                onClick={() =>
-                  this.setState({
-                    week: this.state.week + 1,
-                    weekCO: Math.round(Math.random() + this.state.week * 3),
-                  }) as any
-                }
-              >
-                NEXT
-              </button>
               <div>
                 <span>{this.state.weekCO} CO2/KG</span>
               </div>
