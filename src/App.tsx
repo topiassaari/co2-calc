@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { IconButton } from '@material-ui/core';
+import HouseIcon from '@material-ui/icons/House';
 import { Route, withRouter, Redirect } from "react-router-dom";
 import Home from "./components/Home";
 import Page1 from "./components/Page1";
@@ -27,13 +29,11 @@ class App extends Component<props> {
     return (
       <div>
         <div className="headerContainer">
-          <span className="headerLogo">
-            <img
-              alt="homeLogo"
-              id="logo"
-              onClick={this.naviClick}
-              data-id="home"
-            />
+          <span className="headerLogo" onClick={this.naviClick} data-id="home">
+            <div>
+              <HouseIcon fontSize="inherit" />
+               Puumiehenkuja 12
+              </div>
           </span>
           <div className="navigation">
             <span className="naviItem" onClick={this.naviClick} data-id="page1">

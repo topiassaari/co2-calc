@@ -65,6 +65,7 @@ body {
 
 .headerLogo {
   padding: 8px;
+  font-size: 64px;
 }
 
 .naviItem:hover {
@@ -91,7 +92,7 @@ body {
   font-family: Helvetica;
   & > div {
     & > h2 {
-      font-weight: 800;
+      font-weight: 700;
       font-size: 3rem;
     }
     & > span {
@@ -116,4 +117,11 @@ body {
     width: 80%;
     height: 40%;
   }
+}
+
+.centered
+{
+  display: flex !important;  
+  justify-content: center; 
+  align-items: center;
 }

@@ -1,4 +1,7 @@
 import React from "react";
+import { IconButton } from '@material-ui/core';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import "../styles/App.scss";
 
 class Home extends React.Component {
@@ -6,6 +9,8 @@ class Home extends React.Component {
     date: new Date().toLocaleDateString(),
     week: 52,
     month: 12,
+    weekYear: new Date().getFullYear(),
+    monthYear: new Date().getFullYear(),
     year: new Date().getFullYear(),
     dayCO: 0,
     weekCO: 0,
@@ -14,140 +19,218 @@ class Home extends React.Component {
   };
 
   componentDidMount() {
-    this.setState({ dayCO: Math.round(Math.random() + this.state.week / 7) });
-    this.setState({ weekCO: Math.round(Math.random() + this.state.week) });
+    this.setState({ dayCO: Math.round(Math.random() * 10) });
+    this.setState({ weekCO: Math.round(Math.random() * 70) });
     this.setState({
-      monthCO: Math.round(Math.random() + this.state.month * 2),
+      monthCO: Math.round(Math.random() * 70 * 4),
     });
-    this.setState({ yearCO: Math.round(Math.random() + this.state.year * 3) });
+    this.setState({ yearCO: Math.round(Math.random() * 70 * 4 * 12) });
   }
+
+  resetDate() {
+
+  }
+
+  handleDay(e: string) {
+    if (e === "back") {
+      this.setState({
+        dayCO: Math.round(
+          Math.random() * 10
+        ),
+      })
+    }
+    else {
+      this.setState({
+        dayCO: Math.round(
+          Math.random() * 10
+        ),
+      })
+    }
+
+  }
+
+  handleWeek(e: string) {
+    if (e === "back") {
+      if (this.state.week <= 1) {
+        this.setState({
+          weekYear: this.state.weekYear - 1,
+          week: this.state.week = 52
+        })
+      }
+      else {
+        this.setState({
+          week: this.state.week - 1
+        })
+      }
+    }
+    else {
+      if (this.state.week === 52) {
+        if (this.state.weekYear === 2020) {
+          return
+        }
+        this.setState({
+          weekYear: this.state.weekYear + 1,
+          week: this.state.week = 1
+        })
+      }
+      else {
+        this.setState({
+          week: this.state.week + 1
+        })
+
+      }
+    }
+    this.setState({ weekCO: Math.round(Math.random() * 70) });
+  }
+
+  handleMonth(e: string) {
+    if (e === "back") {
+      if (this.state.month <= 1) {
+        this.setState({
+          monthYear: this.state.monthYear - 1,
+          month: this.state.month = 12
+        })
+      }
+      else {
+        this.setState({
+          month: this.state.month - 1
+        })
+      }
+    }
+    else {
+      if (this.state.month === 12) {
+        if (this.state.monthYear === 2020) {
+          return
+        }
+        this.setState({
+          monthYear: this.state.monthYear + 1,
+          month: this.state.month = 1
+        })
+      }
+      else {
+        this.setState({
+          month: this.state.month + 1
+        })
+
+      }
+    }
+    this.setState({ monthCO: Math.round(Math.random() * 70 * 4) });
+  }
+
+  handleYear(e: string) {
+    if (e === "back") {
+      this.setState({
+        year: this.state.year - 1
+      })
+    }
+    else {
+      if (this.state.year === 2020) {
+        return
+      }
+      this.setState({
+        year: this.state.year + 1
+      })
+    }
+    this.setState({ yearCO: Math.round(Math.random() * 70 * 4 * 12) });
+  }
+
   render() {
     return (
       <article>
         <div id="CO2container">
           <div>
             <div className="box" id="today">
-              <div>
+              <div className="centered">
                 <h2>{this.state.date}</h2>
-                <button
-                  id="prev"
-                  onClick={() =>
-                    this.setState({
-                      dayCO: Math.round(
-                        Math.random() * 10 + this.state.week / 7
-                      ),
-                    }) as any
-                  }
-                >
-                  PREV
-                </button>
-                <button
-                  id="next"
-                  onClick={() =>
-                    this.setState({
-                      dayCO: Math.round(
-                        Math.random() * 10 + this.state.week / 7
-                      ),
-                    }) as any
-                  }
-                >
-                  NEXT
-                </button>
               </div>
-              <div>
-                <span>{this.state.dayCO} CO2/KG</span>
+              <div className="centered">
+                <IconButton
+                  aria-label="Back"
+                  onClick={() => this.handleDay("back")}
+                >
+                  <ArrowBackIcon fontSize='large' />
+                </IconButton>
+                <IconButton
+                  aria-label="Forward"
+                  onClick={() => this.handleDay("forward")}
+                >
+                  <ArrowForwardIcon fontSize='large' />
+                </IconButton>
+              </div>
+              <div >
+                <span className="centered">{this.state.dayCO} CO2/KG</span>
               </div>
             </div>
             <div className="box" id="week">
-              <div>
-                <h2>WEEK {this.state.week}</h2>
-                <button
-                  id="prev"
-                  onClick={() =>
-                    this.setState({
-                      week: this.state.week - 1,
-                      weekCO: Math.round(Math.random() * 3 + this.state.week),
-                    }) as any
-                  }
-                >
-                  PREV
-                </button>
-                <button
-                  id="next"
-                  onClick={() =>
-                    this.setState({
-                      week: this.state.week + 1,
-                      weekCO: Math.round(Math.random() * 3 + this.state.week),
-                    }) as any
-                  }
-                >
-                  NEXT
-                </button>
+              <div className="centered">
+                <h2>WEEK {this.state.week} / {this.state.weekYear}</h2>
               </div>
-              <div>
-                <span>{this.state.weekCO} CO2/KG</span>
+              <div className="centered">
+                <IconButton
+                  aria-label="Back"
+                  id="prev"
+                  onClick={() => this.handleWeek("back")}
+                >
+                  <ArrowBackIcon fontSize='large' />
+                </IconButton>
+                <IconButton
+                  id="next"
+                  onClick={() => this.handleWeek("forward")}
+                >
+                  <ArrowForwardIcon fontSize='large' />
+                </IconButton>
+              </div>
+
+              <div >
+                <span className="centered">{this.state.weekCO} CO2/KG</span>
               </div>
             </div>
           </div>
           <div>
             <div className="box" id="month">
-              <div>
-                <h2>MONTH {this.state.month}</h2>
-                <button
+              <div className="centered">
+                <h2>MONTH {this.state.month} / {this.state.monthYear}</h2>
+              </div>
+              <div className="centered">
+                <IconButton
+                  aria-label="Back"
                   id="prev"
-                  onClick={() =>
-                    this.setState({
-                      month: this.state.month - 1,
-                      monthCO: Math.round(Math.random() + this.state.week * 3),
-                    }) as any
-                  }
+                  onClick={() => this.handleMonth("back")}
                 >
-                  PREV
-                </button>
-                <button
+                  <ArrowBackIcon fontSize='large' />
+                </IconButton>
+                <IconButton
                   id="next"
-                  onClick={() =>
-                    this.setState({
-                      month: this.state.month + 1,
-                      monthCO: Math.round(Math.random() + this.state.week * 3),
-                    }) as any
-                  }
+                  onClick={() => this.handleMonth("forward")}
                 >
-                  NEXT
-                </button>
+                  <ArrowForwardIcon fontSize='large' />
+                </IconButton>
               </div>
               <div>
-                <span>{this.state.monthCO} CO2/KG</span>
+                <span className="centered">{this.state.monthCO} CO2/KG</span>
               </div>
             </div>
             <div className="box" id="year">
-              <div>
+              <div className="centered">
                 <h2>YEAR {this.state.year}</h2>
-                <button
+              </div>
+              <div className="centered">
+              <IconButton
+                  aria-label="Back"
                   id="prev"
-                  onClick={() =>
-                    this.setState({
-                      year: this.state.year - 1,
-                      yearCO: Math.round(Math.random() + this.state.year * 3),
-                    }) as any
-                  }
+                  onClick={() => this.handleYear("back")}
                 >
-                  PREV
-                </button>
-                <button
+                  <ArrowBackIcon fontSize='large' />
+                </IconButton>
+                <IconButton
                   id="next"
-                  onClick={() =>
-                    this.setState({
-                      year: this.state.year + 1,
-                      yearCO: Math.round(Math.random() + this.state.year * 3),
-                    }) as any
-                  }
+                  onClick={() => this.handleYear("forward")}
                 >
-                  NEXT
-                </button>
+                  <ArrowForwardIcon fontSize='large' />
+                </IconButton>
               </div>
               <div>
-                <span>{this.state.yearCO} CO2/KG</span>
+                <span className="centered">{this.state.yearCO} CO2/KG</span>
               </div>
             </div>
           </div>
