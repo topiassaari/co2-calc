@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Route, withRouter, Redirect } from "react-router-dom";
 import Home from "./components/Home";
-import Page1 from "./components/Page1";
-import Page2 from "./components/Page2";
+import Settings from "./components/Settings";
+import Logout from "./components/Logout";
 import "./styles/App.scss";
 
 type props = {
@@ -27,27 +27,21 @@ class App extends Component<props> {
     return (
       <div>
         <div className="headerContainer">
-          <span className="headerLogo">
-            <img
-              alt="homeLogo"
-              id="logo"
-              onClick={this.naviClick}
-              data-id="home"
-            />
+          <span className="headerLogo" onClick={this.naviClick} data-id="home">
           </span>
           <div className="navigation">
-            <span className="naviItem" onClick={this.naviClick} data-id="page1">
-              Page1
+            <span className="naviItem" onClick={this.naviClick} data-id="settings">
+              Settings
             </span>
-            <span className="naviItem" onClick={this.naviClick} data-id="page2">
-              Page2
+            <span className="naviItem" onClick={this.naviClick} data-id="logout">
+              Logout
             </span>
           </div>
         </div>
         <Redirect path="/" to="/home" />
         <Route path="/home" component={Home} />
-        <Route path="/page1" component={Page1} />
-        <Route path="/page2" component={Page2} />
+        <Route path="/settings" component={Settings} />
+        <Route path="/logout" component={Logout} />
       </div>
     );
   }
