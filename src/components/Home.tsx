@@ -3,6 +3,7 @@ import { IconButton } from '@material-ui/core';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import ArrowForwardIcon from '@material-ui/icons/ArrowForward';
 import "../styles/App.scss";
+import { red } from "@material-ui/core/colors";
 
 class Home extends React.Component {
   state = {
@@ -16,6 +17,10 @@ class Home extends React.Component {
     weekCO: 0,
     monthCO: 0,
     yearCO: 0,
+    dayAvg: 5,
+    weekAvg: 35,
+    monthAvg: 140,
+    yearAvg: 1580
   };
 
   componentDidMount() {
@@ -157,8 +162,11 @@ class Home extends React.Component {
                   <ArrowForwardIcon fontSize='large' />
                 </IconButton>
               </div>
-              <div >
+              <div className={this.state.dayCO <= this.state.dayAvg ? "green" : "red"}>
                 <span className="centered">{this.state.dayCO} CO2/KG</span>
+              </div>
+              <div>
+                <span className="centered">Average: {this.state.dayAvg} CO2/KG</span>
               </div>
             </div>
             <div className="box" id="week">
@@ -181,8 +189,11 @@ class Home extends React.Component {
                 </IconButton>
               </div>
 
-              <div >
+              <div className={this.state.weekCO <= this.state.weekAvg ? "green" : "red"}>
                 <span className="centered">{this.state.weekCO} CO2/KG</span>
+              </div>
+              <div>
+                <span className="centered">Average: {this.state.weekAvg} CO2/KG</span>
               </div>
             </div>
           </div>
@@ -206,8 +217,11 @@ class Home extends React.Component {
                   <ArrowForwardIcon fontSize='large' />
                 </IconButton>
               </div>
-              <div>
+              <div className={this.state.monthCO <= this.state.monthAvg ? "green" : "red"}>
                 <span className="centered">{this.state.monthCO} CO2/KG</span>
+              </div>
+              <div>
+                <span className="centered">Average: {this.state.monthAvg} CO2/KG</span>
               </div>
             </div>
             <div className="box" id="year">
@@ -229,8 +243,11 @@ class Home extends React.Component {
                   <ArrowForwardIcon fontSize='large' />
                 </IconButton>
               </div>
-              <div>
+              <div className={this.state.yearCO <= this.state.yearAvg ? "green" : "red"}>
                 <span className="centered">{this.state.yearCO} CO2/KG</span>
+              </div>
+              <div>
+                <span className="centered">Average: {this.state.yearAvg} CO2/KG</span>
               </div>
             </div>
           </div>
