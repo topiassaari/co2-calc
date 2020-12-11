@@ -8,11 +8,15 @@ import { red } from "@material-ui/core/colors";
 class Home extends React.Component {
   state = {
     date: new Date().toLocaleDateString(),
+    currentDate: new Date().toLocaleDateString(),
     week: 52,
+    currentWeek: 52,
     month: 12,
+    currentMonth: 12,
     weekYear: new Date().getFullYear(),
     monthYear: new Date().getFullYear(),
     year: new Date().getFullYear(),
+    currentYear: new Date().getFullYear(),
     dayCO: 0,
     weekCO: 0,
     monthCO: 0,
@@ -157,6 +161,7 @@ class Home extends React.Component {
                 </IconButton>
                 <IconButton
                   aria-label="Forward"
+                  disabled={this.state.date == this.state.currentDate}
                   onClick={() => this.handleDay("forward")}
                 >
                   <ArrowForwardIcon fontSize='large' />
@@ -183,6 +188,7 @@ class Home extends React.Component {
                 </IconButton>
                 <IconButton
                   id="next"
+                  disabled={this.state.week == this.state.currentWeek}
                   onClick={() => this.handleWeek("forward")}
                 >
                   <ArrowForwardIcon fontSize='large' />
@@ -212,6 +218,7 @@ class Home extends React.Component {
                 </IconButton>
                 <IconButton
                   id="next"
+                  disabled={this.state.month == this.state.currentMonth}
                   onClick={() => this.handleMonth("forward")}
                 >
                   <ArrowForwardIcon fontSize='large' />
@@ -238,6 +245,7 @@ class Home extends React.Component {
                 </IconButton>
                 <IconButton
                   id="next"
+                  disabled={this.state.year == this.state.currentYear}
                   onClick={() => this.handleYear("forward")}
                 >
                   <ArrowForwardIcon fontSize='large' />
