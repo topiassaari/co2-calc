@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/co2-calc/static/css/main.9e27aa51.chunk.css",
+    "main.js": "/co2-calc/static/js/main.ba5d450b.chunk.js",
+    "main.js.map": "/co2-calc/static/js/main.ba5d450b.chunk.js.map",
+    "runtime-main.js": "/co2-calc/static/js/runtime-main.83dfa1e1.js",
+    "runtime-main.js.map": "/co2-calc/static/js/runtime-main.83dfa1e1.js.map",
+    "static/js/2.f565fa34.chunk.js": "/co2-calc/static/js/2.f565fa34.chunk.js",
+    "static/js/2.f565fa34.chunk.js.map": "/co2-calc/static/js/2.f565fa34.chunk.js.map",
+    "index.html": "/co2-calc/index.html",
+    "precache-manifest.3f79fae9322aca8defa7fd93c0bfe156.js": "/co2-calc/precache-manifest.3f79fae9322aca8defa7fd93c0bfe156.js",
+    "service-worker.js": "/co2-calc/service-worker.js",
+    "static/css/main.9e27aa51.chunk.css.map": "/co2-calc/static/css/main.9e27aa51.chunk.css.map",
+    "static/js/2.f565fa34.chunk.js.LICENSE.txt": "/co2-calc/static/js/2.f565fa34.chunk.js.LICENSE.txt",
+    "static/media/App.scss": "/co2-calc/static/media/co2.d2caf820.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.83dfa1e1.js",
+    "static/js/2.f565fa34.chunk.js",
+    "static/css/main.9e27aa51.chunk.css",
+    "static/js/main.ba5d450b.chunk.js"
+  ]
+}

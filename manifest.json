@@ -1,0 +1,8 @@
+{
+  "short_name": "CO2",
+  "name": "CO2",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
