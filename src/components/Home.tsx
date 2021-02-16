@@ -132,7 +132,7 @@ class Home extends React.Component {
       <article>
         <div className="title">
           <HouseIcon fontSize="inherit" />
-          Puumiehenkuja 12
+          Address 123
         </div>
         <div id="CO2container">
           <div>
